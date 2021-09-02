@@ -14,4 +14,18 @@ class Projek extends Model
     {
         return $this->belongsTo(PlatformProjek::class);
     }
+
+    public function scopeCari($query, array $filters)
+    {
+        $query->when($filters['cari'] ?? false, function ($query, $cari) {
+            return $query->where('judul', 'like', '%' . $cari . '%')
+                ->orWhere('isi', 'like', '%' . $cari . '%');
+        });
+
+        $query->when($filters['platform'] ?? false, function ($query, $platform) {
+            return $query->whereHas('platformProjek', function ($query) use ($platform) {
+                $query->where('platform_projek_id', $platform);
+            });
+        });
+    }
 }

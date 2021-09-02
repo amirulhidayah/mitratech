@@ -4,13 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Projek;
+use App\Models\Client;
+use App\Models\Cover;
+use App\Models\PlatformProjek;
+use App\Models\Tim;
 
 class WelcomeController extends Controller
 {
     public function index()
     {
-        return view('pages.welcome');
+        $projek = Projek::with('platformProjek')->orderByDesc('id')->get();
+        $client = Client::get();
+        $tim = Tim::orderBy('urutan')->get();
+        $cover = Cover::get();
+        return view('pages.welcome', compact(['projek', 'client', 'tim', 'cover']));
     }
 
     public function login()
@@ -43,5 +51,17 @@ class WelcomeController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function detailProjek(Projek $projek)
+    {
+        return view('pages.detailProjek', compact(['projek']));
+    }
+
+    public function daftarProjek()
+    {
+        $platforms = PlatformProjek::orderBy('nama')->get();
+        $projeks = Projek::with('platformProjek')->cari(request(['cari', 'platform']))->latest()->paginate(6)->withQueryString();
+        return view('pages.daftarProjek', compact(['platforms', 'projeks']));
     }
 }
