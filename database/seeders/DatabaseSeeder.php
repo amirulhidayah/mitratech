@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CoverSeeder::class);
         $this->call(PlatformProjekSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(ProjekSeeder::class);
     }
 }

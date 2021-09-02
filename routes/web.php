@@ -24,6 +24,9 @@ use App\Http\Controllers\dashboard\PlatformProjekController;
 
 Route::get('/', [WelcomeController::class, 'index']);
 
+Route::get('detailProjek/{projek}', [WelcomeController::class, 'detailProjek']);
+Route::get('daftarProjek', [WelcomeController::class, 'daftarProjek']);
+
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/login', [WelcomeController::class, 'login'])->name('login');
     Route::post('/login', [WelcomeController::class, 'authenticate']);
@@ -42,9 +45,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('upload', [ProjekController::class, 'upload']);
     Route::get('/logout', [WelcomeController::class, 'logout']);
 });
-// Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
-//     \UniSharp\LaravelFilemanager\Lfm::routes();
-// });
-Route::group(['prefix' => 'laravel-filemanager'], function () {
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });

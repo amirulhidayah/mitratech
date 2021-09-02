@@ -77,7 +77,7 @@
                     <li class="nav-item">
                         <a class="nav-link" id="navbarLandings" href="#projek" aria-haspopup="true"
                             aria-expanded="false" data-scroll='{"offset": 0}'>
-                            Projek 
+                            Projek
                         </a>
                     </li>
                     <li class="nav-item">
@@ -87,25 +87,25 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="navbarLandings" href="#team" aria-haspopup="true" aria-expanded="false"
-                            data-scroll='{"offset": 0}'>
+                        <a class="nav-link" id="navbarLandings" href="#team" aria-haspopup="true"
+                            aria-expanded="false" data-scroll='{"offset": 0}'>
                             Team
                         </a>
-                    </li>                    
+                    </li>
                 </ul>
 
                 <!-- Button -->
                 @auth()
-                <a class="navbar-btn btn btn-sm btn-primary lift ms-auto" href="#kontak" data-scroll='{"offset": 0}'>
-                    Kontak
-                </a>
-                <a class="navbar-btn btn btn-sm btn-success lift ms-2" href="/tim" data-scroll='{"offset": 0}'>
-                    Dashboard
-                </a>
+                    <a class="navbar-btn btn btn-sm btn-primary lift ms-auto" href="#kontak" data-scroll='{"offset": 0}'>
+                        Kontak
+                    </a>
+                    <a class="navbar-btn btn btn-sm btn-success lift ms-2" href="/tim" data-scroll='{"offset": 0}'>
+                        Dashboard
+                    </a>
                 @else
-                <a class="navbar-btn btn btn-sm btn-primary lift ms-auto" href="#kontak" data-scroll='{"offset": 0}'>
-                    Kontak
-                </a>                    
+                    <a class="navbar-btn btn btn-sm btn-primary lift ms-auto" href="#kontak" data-scroll='{"offset": 0}'>
+                        Kontak
+                    </a>
                 @endauth
             </div>
         </div>
@@ -134,42 +134,48 @@
                     <!-- Image -->
                     <div class="row gx-4">
                         <div class="col-4">
-                            <a data-bigpicture='{"imgSrc": "assets/welcome/img/covers/mobile.png"}' href="#">
-                                <img class="img-fluid rounded shadow-lg" src="assets/welcome/img/covers/mobile.png"
-                                    alt="..." />
+                            <a data-bigpicture='{"imgSrc": "assets/welcome/img/covers/{{ $cover[0]->foto }}"}'
+                                href="#">
+                                <img class="img-fluid rounded shadow-lg"
+                                    src="assets/welcome/img/covers/{{ $cover[0]->foto }}" alt="..." />
                             </a>
                         </div>
                         <div class="col-3">
-                            <a data-bigpicture='{"imgSrc": "assets/welcome/img/covers/sipenaemas.png"}' href="#">
-                                <img class="img-fluid rounded shadow-lg mb-4"
-                                    src="assets/welcome/img/covers/sipenaemas.png" alt="..." />
+                            <a data-bigpicture='{"imgSrc": "assets/welcome/img/covers/{{ $cover[1]->foto }}"}'
+                                href="#">
+                                <img class="img-fluid rounded shadow-lg"
+                                    src="assets/welcome/img/covers/{{ $cover[1]->foto }}" alt="..." />
                             </a>
 
-                            <a data-bigpicture='{"imgSrc": "assets/welcome/img/covers/sipekaperban.png"}' href="#">
-                                <img class="img-fluid rounded shadow-lg"
-                                    src="assets/welcome/img/covers/sipekaperban.png" alt="..." />
+                            <a data-bigpicture='{"imgSrc": "assets/welcome/img/covers/{{ $cover[2]->foto }}"}'
+                                href="#">
+                                <img class="img-fluid rounded shadow-lg mt-4"
+                                    src="assets/welcome/img/covers/{{ $cover[2]->foto }}" alt="..." />
                             </a>
                         </div>
                         <div class="col-5">
                             <div class="row gx-5 mb-4">
                                 <div class="col-6">
-                                    <a data-bigpicture='{"imgSrc": "assets/welcome/img/covers/situlus.png"}' href="#">
+                                    <a data-bigpicture='{"imgSrc": "assets/welcome/img/covers/{{ $cover[3]->foto }}"}'
+                                        href="#">
                                         <img class="img-fluid rounded shadow-lg"
-                                            src="assets/welcome/img/covers/situlus.png" alt="..." />
+                                            src="assets/welcome/img/covers/{{ $cover[3]->foto }}" alt="..." />
                                     </a>
                                 </div>
                                 <div class="col-6">
-                                    <a data-bigpicture='{"imgSrc": "assets/welcome/img/covers/psikotes.png"}' href="#">
+                                    <a data-bigpicture='{"imgSrc": "assets/welcome/img/covers/{{ $cover[4]->foto }}"}'
+                                        href="#">
                                         <img class="img-fluid rounded shadow-lg"
-                                            src="assets/welcome/img/covers/psikotes.png" alt="..." />
+                                            src="assets/welcome/img/covers/{{ $cover[4]->foto }}" alt="..." />
                                     </a>
                                 </div>
                             </div>
                             <!-- / .row -->
 
-                            <a data-bigpicture='{"imgSrc": "assets/welcome/img/covers/upsp.png"}' href="#">
-                                <img class="img-fluid rounded shadow-lg" src="assets/welcome/img/covers/upsp.png"
-                                    alt="..." />
+                            <a data-bigpicture='{"imgSrc": "assets/welcome/img/covers/{{ $cover[5]->foto }}"}'
+                                href="#">
+                                <img class="img-fluid rounded shadow-lg"
+                                    src="assets/welcome/img/covers/{{ $cover[5]->foto }}" alt="..." />
                             </a>
                         </div>
                     </div>
@@ -278,206 +284,10 @@
                     <h2 class="fw-bold"><b> Projek Kami</b></h2>
 
                     <!-- Text -->
-                    <p class="fs-lg text-gray-700">3 Projek Terakhir Kami</p>
-                </div>
-            </div>
-            <!-- / .row -->
-        </div>
-        <!-- / .container -->
-    </section>
-
-    <!-- ARTICLES -->
-
-    <section class="" data-aos="fade-right">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Card -->
-                    <div class="card card-row shadow-light-lg mb-6 lift lift-lg">
-                        <div class="row gx-0">
-                            <div class="col-12">
-                                <!-- Badge -->
-                            </div>
-                            <a class="col-12 col-md-6 order-md-2 bg-cover card-img-end" style="
-                    background-image: url(assets/welcome/img/situs/sipekaperban.png);
-                  " href="#!">
-                                <!-- Image (placeholder) -->
-                                <img src="assets/welcome/img/situs/sipekaperban.png" alt="..."
-                                    class="img-fluid d-md-none invisible" />
-
-                                <!-- Shape -->
-                                <div class="
-                      shape shape-start shape-fluid-y
-                      text-white
-                      d-none d-md-block
-                    ">
-                                    <svg viewBox="0 0 112 690" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M0 0h62.759v172C38.62 384 112 517 112 517v173H0V0z"
-                                            fill="currentColor" />
-                                    </svg>
-                                </div>
-                            </a>
-                            <div class="col-12 col-md-6 order-md-1">
-                                <!-- Body -->
-                                <a class="card-body" href="#!">
-                                    <!-- Heading -->
-                                    <h3><b> SIPEKAPERBAN</b></h3>
-
-                                    <!-- Text -->
-                                    <p class="mb-0 text-muted">
-                                        Sistem Pendukung Keputusan Penentuan Prioritas Perbaikan
-                                        Jalan (WASPAS) Menggunakan Metode Weighted Aggregated Sum
-                                        Product Assessment
-                                    </p>
-                                </a>
-
-                                <!-- Meta -->
-                                <a class="card-meta" href="#!">
-                                    <!-- Divider -->
-                                    <hr class="card-meta-divider" />
-
-                                    <!-- Date -->
-                                    <p class="h6 text-uppercase text-muted mb-0 text-center">
-                                        <time datetime="2019-05-02">May 02</time>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- / .row -->
-                    </div>
-                </div>
-            </div>
-            <!-- / .row -->
-        </div>
-        <!-- / .container -->
-    </section>
-
-    <!-- ARTICLES -->
-    <section class="pt-7 pt-md-10">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-6 d-flex" data-aos="fade-right">
-                    <!-- Card -->
-                    <div class="card mb-6 shadow-light-lg lift lift-lg">
-                        <!-- Image -->
-                        <a class="card-img-top" href="#!">
-                            <!-- Image -->
-                            <img src="assets/welcome/img/situs/sipenaemas.png" alt="..." class="card-img-top" />
-
-                            <!-- Shape -->
-                            <div class="position-relative">
-                                <div class="shape shape-bottom shape-fluid-x text-white">
-                                    <svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M2160 0C1440 240 720 240 720 240H0v240h2880V0h-720z"
-                                            fill="currentColor" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </a>
-
-                        <!-- Body -->
-                        <a class="card-body" href="#!">
-                            <!-- Heading -->
-                            <h3><b> SIPENAEMAS</b></h3>
-
-                            <!-- Text -->
-                            <p class="mb-0 text-muted">
-                                Sistem Informasi Manajemen Penelitian dan Pengabdian Kepada
-                                Masyarakat
-                            </p>
-                        </a>
-
-                        <!-- Meta -->
-                        <a class="card-meta mt-auto" href="#!">
-                            <!-- Divider -->
-                            <hr class="card-meta-divider" />
-
-                            <!-- Date -->
-                            <p class="h6 text-uppercase text-muted mb-0 text-center">
-                                <time datetime="2019-05-02">May 02</time>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 d-flex" data-aos="fade-left">
-                    <!-- Card -->
-                    <div class="card mb-6 shadow-light-lg lift lift-lg">
-                        <!-- Image -->
-                        <a class="card-img-top" href="#!">
-                            <!-- Image -->
-                            <img src="assets/welcome/img/situs/situlus.png" alt="..." class="card-img-top" />
-
-                            <!-- Shape -->
-                            <div class="position-relative">
-                                <div class="shape shape-bottom shape-fluid-x text-white">
-                                    <svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M2160 0C1440 240 720 240 720 240H0v240h2880V0h-720z"
-                                            fill="currentColor" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </a>
-
-                        <!-- Body -->
-                        <a class="card-body" href="#!">
-                            <!-- Heading -->
-                            <h3><b> SITULUS</b></h3>
-
-                            <!-- Text -->
-                            <p class="mb-0 text-muted">
-                                Koperasi Virtual Bawaslu Sulawesi Tengah
-                            </p>
-                        </a>
-
-                        <!-- Meta -->
-                        <a class="card-meta mt-auto" href="#!">
-                            <!-- Divider -->
-                            <hr class="card-meta-divider" />
-
-                            <!-- Date -->
-                            <p class="h6 text-uppercase text-muted mb-0 text-center">
-                                <time datetime="2019-05-02">May 02</time>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- / .row -->
-        </div>
-        <!-- / .container -->
-    </section>
-
-    <!-- MORE -->
-    <section class="pt-1 pb-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-9 col-lg-8 col-xl-7">
-                    <!-- Button -->
-                    <a href="#!" class="btn w-100 btn-outline-gray-300 d-flex align-items-center">
-                        <span class="mx-auto">Lihat Semua Projek</span>
-                        <i class="fe fe-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- / .row -->
-        </div>
-        <!-- / .container -->
-    </section>
-
-    <!-- CASE STUDIES -->
-    <section class="pt-10" id="client">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-10 col-lg-8 text-center">
-                    <!-- Heading -->
-                    <h2 class="fw-bold"><b> Client Kami</b></h2>
-
-                    <!-- Text -->
-                    <p class="fs-lg text-gray-700 mb-9">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero
-                        vero qui iste perferendis incidunt id amet aut ea soluta velit!
+                    <p class="fs-lg text-gray-700">
+                        @if (count($projek) == 3)
+                            3
+                        @endif Projek Terakhir Kami
                     </p>
                 </div>
             </div>
@@ -486,307 +296,308 @@
         <!-- / .container -->
     </section>
 
-    <!-- CASE STUDIES (CAROUSEL) -->
-    <section>
+    <!-- ARTICLES -->
+
+    @if ($projek)
+        <section class="___class_+?72___" data-aos="fade-right">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Card -->
+                        <div class="card card-row shadow-light-lg mb-6 lift lift-lg">
+                            <div class="row gx-0">
+                                <div class="col-12">
+                                    <!-- Badge -->
+                                </div>
+                                <a class="col-12 col-md-6 order-md-2 bg-cover card-img-end" style="
+                    background-image: url(assets/welcome/img/projek/foto/{{ $projek[0]->foto }});
+                  " href="{{ url('detailProjek/' . $projek[0]->id) }}">
+                                    <!-- Image (placeholder) -->
+                                    <img src="assets/welcome/img/projek/foto/{{ $projek[0]->foto }}" alt="..."
+                                        class="img-fluid d-md-none invisible" />
+
+                                    <!-- Shape -->
+                                    <div
+                                        class="
+                      shape shape-start shape-fluid-y
+                      text-white
+                      d-none d-md-block
+                    ">
+                                        <svg viewBox="0 0 112 690" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 0h62.759v172C38.62 384 112 517 112 517v173H0V0z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </div>
+                                </a>
+                                <div class="col-12 col-md-6 order-md-1">
+                                    <!-- Body -->
+                                    <a class="card-body" href="{{ url('detailProjek/' . $projek[0]->id) }}">
+                                        <!-- Heading -->
+                                        <h3><b> {{ $projek[0]->judul }}</b></h3>
+
+                                        <!-- Text -->
+                                        <p class="mb-0 text-muted">
+                                            {{ $projek[0]->deskripsi }}
+                                        </p>
+                                    </a>
+
+                                    <!-- Meta -->
+                                    <a class="card-meta" href="{{ url('detailProjek/' . $projek[0]->id) }}">
+                                        <!-- Divider -->
+                                        <hr class="card-meta-divider" />
+
+                                        <!-- Date -->
+                                        <p class="h6 text-uppercase text-muted mb-0 text-center">
+                                            {{ $projek[0]->platformProjek->nama }}
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- / .row -->
+                        </div>
+                    </div>
+                </div>
+                <!-- / .row -->
+            </div>
+            <!-- / .container -->
+        </section>
+    @endif
+    <!-- ARTICLES -->
+
+    <section class="pt-7 pt-md-10">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <!-- Flickity -->
-                    <div class="flickity-viewport-visible pt-2 pb-9"
+                @if (count($projek) >= 2)
+                    <div class="col-12 col-md-6 d-flex" data-aos="fade-right">
+                        <!-- Card -->
+                        <div class="card mb-6 shadow-light-lg lift lift-lg">
+                            <!-- Image -->
+                            <a class="card-img-top" href="{{ url('detailProjek/' . $projek[1]->id) }}">
+                                <!-- Image -->
+                                <img src="assets/welcome/img/projek/foto/{{ $projek[1]->foto }}" alt="..."
+                                    class="card-img-top" />
+
+                                <!-- Shape -->
+                                <div class="position-relative">
+                                    <div class="shape shape-bottom shape-fluid-x text-white">
+                                        <svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M2160 0C1440 240 720 240 720 240H0v240h2880V0h-720z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Body -->
+                            <a class="card-body" href="{{ url('detailProjek/' . $projek[1]->id) }}">
+                                <!-- Heading -->
+                                <h3><b> {{ $projek[1]->judul }}</b></h3>
+
+                                <!-- Text -->
+                                <p class="mb-0 text-muted">
+                                    {{ $projek[1]->deskripsi }}
+                                </p>
+                            </a>
+
+                            <!-- Meta -->
+                            <a class="card-meta mt-auto" href="{{ url('detailProjek/' . $projek[1]->id) }}">
+                                <!-- Divider -->
+                                <hr class="card-meta-divider" />
+
+                                <!-- Date -->
+                                <p class="h6 text-uppercase text-muted mb-0 text-center">
+                                    {{ $projek[1]->platformProjek->nama }}
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                @endif
+                @if (count($projek) >= 3)
+                    <div class="col-12 col-md-6 d-flex" data-aos="fade-right">
+                        <!-- Card -->
+                        <div class="card mb-6 shadow-light-lg lift lift-lg">
+                            <!-- Image -->
+                            <a class="card-img-top" href="{{ url('detailProjek/' . $projek[2]->id) }}">
+                                <!-- Image -->
+                                <img src="assets/welcome/img/projek/foto/{{ $projek[2]->foto }}" alt="..."
+                                    class="card-img-top" />
+
+                                <!-- Shape -->
+                                <div class="position-relative">
+                                    <div class="shape shape-bottom shape-fluid-x text-white">
+                                        <svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M2160 0C1440 240 720 240 720 240H0v240h2880V0h-720z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Body -->
+                            <a class="card-body" href="{{ url('detailProjek/' . $projek[2]->id) }}">
+                                <!-- Heading -->
+                                <h3><b> {{ $projek[2]->judul }}</b></h3>
+
+                                <!-- Text -->
+                                <p class="mb-0 text-muted">
+                                    {{ $projek[2]->deskripsi }}
+                                </p>
+                            </a>
+
+                            <!-- Meta -->
+                            <a class="card-meta mt-auto" href="{{ url('detailProjek/' . $projek[2]->id) }}">
+                                <!-- Divider -->
+                                <hr class="card-meta-divider" />
+
+                                <!-- Date -->
+                                <p class="h6 text-uppercase text-muted mb-0 text-center">
+                                    {{ $projek[2]->platformProjek->nama }}
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                @endif
+            </div>
+            <!-- / .row -->
+        </div>
+        <!-- / .container -->
+    </section>
+
+    <!-- MORE -->
+    @if ($projek)
+        <section class="pt-1 pb-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-9 col-lg-8 col-xl-7">
+                        <!-- Button -->
+                        <a href="{{ url('daftarProjek') }}"
+                            class="btn w-100 btn-outline-gray-300 d-flex align-items-center">
+                            <span class="mx-auto">Lihat Semua Projek</span>
+                            <i class="fe fe-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- / .row -->
+            </div>
+            <!-- / .container -->
+        </section>
+    @endif
+
+    @if ($client)
+        <!-- CASE STUDIES -->
+        <section class="pt-10" id="client">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-10 col-lg-8 text-center">
+                        <!-- Heading -->
+                        <h2 class="fw-bold"><b> Client Kami</b></h2>
+
+                        <!-- Text -->
+                        <p class="fs-lg text-gray-700 mb-9">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero
+                            vero qui iste perferendis incidunt id amet aut ea soluta velit!
+                        </p>
+                    </div>
+                </div>
+                <!-- / .row -->
+            </div>
+            <!-- / .container -->
+        </section>
+
+        <!-- CASE STUDIES (CAROUSEL) -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Flickity -->
+                        <div class="flickity-viewport-visible pt-2 pb-9"
+                            data-flickity='{"cellAlign": "left", "imagesLoaded": true, "pageDots": false, "prevNextButtons": false, "contain": true}'>
+                            @foreach ($client as $klien)
+                                <div class="col-12 col-md-5 col-lg-3 logo-client">
+                                    <!-- Card -->
+                                    <div class="card card-border shadow-light-lg lift lift-lg"
+                                        style="border-top-color: white">
+                                        <div class="card-body text-center">
+                                            <!-- Icon -->
+                                            <div class="img-fluid mb-5 w-50 mx-auto" style="color: #ff5a5f">
+                                                <img src="assets/welcome/img/client/{{ $klien->logo }}" alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <!-- / .row -->
+            </div>
+            <!-- / .container -->
+        </section>
+    @endif
+
+    @if ($tim)
+        <!-- TIM KAMI -->
+        <section class="pt-3 pb-0" id="team">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-10 col-lg-8 text-center">
+                        <!-- Heading -->
+                        <h2 class="fw-bold"><b> Tim Kami</b></h2>
+                    </div>
+                </div>
+                <!-- / .row -->
+            </div>
+            <!-- / .container -->
+        </section>
+
+        <!-- RELATED -->
+        <section class="pt-5 bg-light pb-10 text-center">
+            <div class="container">
+                <!-- / .row -->
+                <div class="row">
+                    <div class="flickity-viewport-visible"
                         data-flickity='{"cellAlign": "left", "imagesLoaded": true, "pageDots": false, "prevNextButtons": false, "contain": true}'>
-                        <div class="col-12 col-md-5 col-lg-3 logo-client">
-                            <!-- Card -->
-                            <div class="card card-border shadow-light-lg lift lift-lg" style="border-top-color: white">
-                                <div class="card-body text-center">
-                                    <!-- Icon -->
-                                    <div class="img-fluid mb-5 w-50 mx-auto" style="color: #ff5a5f">
-                                        <img src="assets/welcome/img/client/untad.png" alt="" />
+                        @foreach ($tim as $team)
+                            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                                <!-- Card -->
+                                <a class="card mb-6 mb-lg-0 shadow-light-lg" href="#!">
+                                    <!-- Image -->
+                                    <div class="card-zoom">
+                                        <img class="card-img-top" src="assets/welcome/img/teams/{{ $team->foto }}"
+                                            alt="..." />
                                     </div>
 
-                                    <!-- Text -->
-                                    <!-- <p class="text-black-700 mb-5 fw-bold">
-                      Universitas Tadulako
-                    </p> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-5 col-lg-3 logo-client">
-                            <!-- Card -->
-                            <div class="card card-border shadow-light-lg lift lift-lg" style="border-top-color: white">
-                                <div class="card-body text-center">
-                                    <!-- Icon -->
-                                    <div class="img-fluid mb-5 w-50 mx-auto" style="color: #ff5a5f">
-                                        <img src="assets/welcome/img/client/bawaslu.png" alt="" />
-                                    </div>
+                                    <!-- Body -->
+                                    <div class="card-body">
+                                        <!-- Shape -->
+                                        <div class="shape shape-bottom-100 shape-fluid-x text-white">
+                                            <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z"
+                                                    fill="currentColor" />
+                                            </svg>
+                                        </div>
 
-                                    <!-- Text -->
-                                    <!-- <p class="text-black-700 mb-5 fw-bold">
-                      Universitas Tadulako
-                    </p> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-5 col-lg-3 logo-client">
-                            <!-- Card -->
-                            <div class="card card-border shadow-light-lg lift lift-lg" style="border-top-color: white">
-                                <div class="card-body text-center">
-                                    <!-- Icon -->
-                                    <div class="img-fluid mb-5 w-50 mx-auto" style="color: #ff5a5f">
-                                        <img src="assets/welcome/img/client/pu.png" alt="" />
-                                    </div>
+                                        <!-- Preheading -->
+                                        <h6 class="text-uppercase mb-1 text-muted">
+                                            {{ $team->posisi }}
+                                        </h6>
 
-                                    <!-- Text -->
-                                    <!-- <p class="text-black-700 mb-5 fw-bold">
-                      Universitas Tadulako
-                    </p> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-5 col-lg-3 logo-client">
-                            <!-- Card -->
-                            <div class="card card-border shadow-light-lg lift lift-lg" style="border-top-color: white">
-                                <div class="card-body text-center">
-                                    <!-- Icon -->
-                                    <div class="img-fluid mb-5 w-50 mx-auto" style="color: #ff5a5f">
-                                        <img src="assets/welcome/img/client/untad.png" alt="" />
+                                        <!-- Heading -->
+                                        <h4 class="mb-0">{{ $team->nama }}</h4>
                                     </div>
-
-                                    <!-- Text -->
-                                    <!-- <p class="text-black-700 mb-5 fw-bold">
-                      Universitas Tadulako
-                    </p> -->
-                                </div>
+                                </a>
                             </div>
-                        </div>
-                        <div class="col-12 col-md-5 col-lg-3 logo-client">
-                            <!-- Card -->
-                            <div class="card card-border shadow-light-lg lift lift-lg" style="border-top-color: white">
-                                <div class="card-body text-center">
-                                    <!-- Icon -->
-                                    <div class="img-fluid mb-5 w-50 mx-auto" style="color: #ff5a5f">
-                                        <img src="assets/welcome/img/client/bawaslu.png" alt="" />
-                                    </div>
-
-                                    <!-- Text -->
-                                    <!-- <p class="text-black-700 mb-5 fw-bold">
-                      Universitas Tadulako
-                    </p> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-5 col-lg-3 logo-client">
-                            <!-- Card -->
-                            <div class="card card-border shadow-light-lg lift lift-lg" style="border-top-color: white">
-                                <div class="card-body text-center">
-                                    <!-- Icon -->
-                                    <div class="img-fluid mb-5 w-50 mx-auto" style="color: #ff5a5f">
-                                        <img src="assets/welcome/img/client/pu.png" alt="" />
-                                    </div>
-
-                                    <!-- Text -->
-                                    <!-- <p class="text-black-700 mb-5 fw-bold">
-                      Universitas Tadulako
-                    </p> -->
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
+                <!-- / .row -->
             </div>
-            <!-- / .row -->
-        </div>
-        <!-- / .container -->
-    </section>
+            <!-- / .container -->
+        </section>
+    @endif
 
-    <!-- TIM KAMI -->
-    <section class="pt-3 pb-0" id="team">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-10 col-lg-8 text-center">
-                    <!-- Heading -->
-                    <h2 class="fw-bold"><b> Tim Kami</b></h2>
-                </div>
-            </div>
-            <!-- / .row -->
-        </div>
-        <!-- / .container -->
-    </section>
-
-    <!-- RELATED -->
-    <section class="pt-5 bg-light pb-10 text-center">
-        <div class="container">
-            <!-- / .row -->
-            <div class="row">
-                <div class="flickity-viewport-visible"
-                    data-flickity='{"cellAlign": "left", "imagesLoaded": true, "pageDots": false, "prevNextButtons": false, "contain": true}'>
-                    <div class="col-12 col-md-6 col-lg-4 d-flex">
-                        <!-- Card -->
-                        <a class="card mb-6 mb-lg-0 shadow-light-lg" href="#!">
-                            <!-- Image -->
-                            <div class="card-zoom">
-                                <img class="card-img-top" src="assets/welcome/img/teams/hendra.png" alt="..." />
-                            </div>
-
-                            <!-- Body -->
-                            <div class="card-body">
-                                <!-- Shape -->
-                                <div class="shape shape-bottom-100 shape-fluid-x text-white">
-                                    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor" />
-                                    </svg>
-                                </div>
-
-                                <!-- Preheading -->
-                                <h6 class="text-uppercase mb-1 text-muted">
-                                    Project Manager
-                                </h6>
-
-                                <!-- Heading -->
-                                <h4 class="mb-0">Ir. Syaiful Hendra, S.Kom., M.Kom.</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 d-flex">
-                        <!-- Card -->
-                        <a class="card mb-6 mb-lg-0 shadow-light-lg" href="#!">
-                            <!-- Image -->
-                            <div class="card-zoom">
-                                <img class="card-img-top" src="assets/welcome/img/teams/amirul.png" alt="..." />
-                            </div>
-
-                            <!-- Body -->
-                            <div class="card-body">
-                                <!-- Shape -->
-                                <div class="shape shape-bottom-100 shape-fluid-x text-white">
-                                    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor" />
-                                    </svg>
-                                </div>
-
-                                <!-- Preheading -->
-                                <h6 class="text-uppercase mb-1 text-muted">
-                                    Senior Developer
-                                </h6>
-
-                                <!-- Heading -->
-                                <h4 class="mb-0">Amirul Hidayah</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 d-flex">
-                        <!-- Card -->
-                        <a class="card d-md-none d-lg-flex shadow-light-lg" href="#">
-                            <!-- Image -->
-                            <div class="card-zoom">
-                                <img class="card-img-top" src="assets/welcome/img/teams/arham.png" alt="..." />
-                            </div>
-
-                            <!-- Body -->
-                            <div class="card-body">
-                                <!-- Shape -->
-                                <div class="shape shape-bottom-100 shape-fluid-x text-white">
-                                    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor" />
-                                    </svg>
-                                </div>
-
-                                <!-- Preheading -->
-                                <h6 class="text-uppercase mb-1 text-muted">
-                                    Senior Developer
-                                </h6>
-
-                                <!-- Heading -->
-                                <h4 class="mb-0">Moh. Arham Rahim</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 d-flex">
-                        <!-- Card -->
-                        <a class="card mb-6 mb-lg-0 shadow-light-lg" href="#!">
-                            <!-- Image -->
-                            <div class="card-zoom">
-                                <img class="card-img-top" src="assets/welcome/img/teams/hendra.png" alt="..." />
-                            </div>
-
-                            <!-- Body -->
-                            <div class="card-body">
-                                <!-- Shape -->
-                                <div class="shape shape-bottom-100 shape-fluid-x text-white">
-                                    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor" />
-                                    </svg>
-                                </div>
-
-                                <!-- Preheading -->
-                                <h6 class="text-uppercase mb-1 text-muted">
-                                    Project Manager
-                                </h6>
-
-                                <!-- Heading -->
-                                <h4 class="mb-0">Ir. Syaiful Hendra, S.Kom., M.Kom.</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 d-flex">
-                        <!-- Card -->
-                        <a class="card mb-6 mb-lg-0 shadow-light-lg" href="#!">
-                            <!-- Image -->
-                            <div class="card-zoom">
-                                <img class="card-img-top" src="assets/welcome/img/teams/amirul.png" alt="..." />
-                            </div>
-
-                            <!-- Body -->
-                            <div class="card-body">
-                                <!-- Shape -->
-                                <div class="shape shape-bottom-100 shape-fluid-x text-white">
-                                    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor" />
-                                    </svg>
-                                </div>
-
-                                <!-- Preheading -->
-                                <h6 class="text-uppercase mb-1 text-muted">
-                                    Senior Developer
-                                </h6>
-
-                                <!-- Heading -->
-                                <h4 class="mb-0">Amirul Hidayah</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 d-flex">
-                        <!-- Card -->
-                        <a class="card d-md-none d-lg-flex shadow-light-lg" href="#">
-                            <!-- Image -->
-                            <div class="card-zoom">
-                                <img class="card-img-top" src="assets/welcome/img/teams/arham.png" alt="..." />
-                            </div>
-
-                            <!-- Body -->
-                            <div class="card-body">
-                                <!-- Shape -->
-                                <div class="shape shape-bottom-100 shape-fluid-x text-white">
-                                    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor" />
-                                    </svg>
-                                </div>
-
-                                <!-- Preheading -->
-                                <h6 class="text-uppercase mb-1 text-muted">
-                                    Senior Developer
-                                </h6>
-
-                                <!-- Heading -->
-                                <h4 class="mb-0">Moh. Arham Rahim</h4>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- / .row -->
-        </div>
-        <!-- / .container -->
-    </section>
 
     <!-- WELCOME -->
     <section class="py-10 py-md-14 bg-cover" style="background-color: rgb(21, 73, 206)">
@@ -874,47 +685,6 @@
 
                     <!-- Text -->
                     <p class="text-gray-700 mb-2">Lorem ipsum dolor sit amet.</p>
-                    <a href="/login" class="btn btn-sm btn-outline-secondary"><i class="fas fa-sign-in-alt"></i> Login</a>
-
-                    <!-- Social -->
-                    <!-- <ul class="list-unstyled list-inline list-social mb-6 mb-md-0">
-              <li class="list-inline-item list-social-item me-3">
-                <a href="#!" class="text-decoration-none">
-                  <img
-                    src="./assets/img/icons/social/instagram.svg"
-                    class="list-social-icon"
-                    alt="..."
-                  />
-                </a>
-              </li>
-              <li class="list-inline-item list-social-item me-3">
-                <a href="#!" class="text-decoration-none">
-                  <img
-                    src="./assets/img/icons/social/facebook.svg"
-                    class="list-social-icon"
-                    alt="..."
-                  />
-                </a>
-              </li>
-              <li class="list-inline-item list-social-item me-3">
-                <a href="#!" class="text-decoration-none">
-                  <img
-                    src="./assets/img/icons/social/twitter.svg"
-                    class="list-social-icon"
-                    alt="..."
-                  />
-                </a>
-              </li>
-              <li class="list-inline-item list-social-item">
-                <a href="#!" class="text-decoration-none">
-                  <img
-                    src="./assets/img/icons/social/pinterest.svg"
-                    class="list-social-icon"
-                    alt="..."
-                  />
-                </a>
-              </li>
-            </ul> -->
                 </div>
             </div>
             <!-- / .row -->
