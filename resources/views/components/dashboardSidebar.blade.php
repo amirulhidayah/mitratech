@@ -47,7 +47,7 @@
                                 <p>Cover</p>
                             </a>
                         </li>
-                        <li class="nav-item" id="nav-cover">
+                        <li class="nav-item" id="nav-users">
                             <a href="{{ url('user') }}">
                                 <i class="fas fa-users"></i>
                                 <p>Users</p>
