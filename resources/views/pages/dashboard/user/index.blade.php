@@ -16,6 +16,7 @@
                     <th>Username</th>
                     {{-- <th>Password</th> --}}
                     <th>Role</th>
+                    <th>Foto</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -77,7 +78,13 @@
                             }                     
                         }
                     },
-
+                    {
+                        data: 'foto',
+                        name: 'foto',
+                        orderable: true,
+                        searchable: true,
+                        class: 'text-center'
+                    },
                     {
                         data: 'action',
                         name: 'action',
@@ -94,7 +101,7 @@
                 }
             });
 
-            $('body').on('click', '.deleteTim', function() {
+            $('body').on('click', '.deleteUser', function() {
                 var id = $(this).data('id');
                 swal({
                     title: 'Anda Yakin?',
@@ -164,9 +171,9 @@
             });
         });
     </script>
-    {{-- <script>
+    <script>
         $(document).ready(function() {
-            $('#nav-tim').addClass('active');
+            $('#nav-users').addClass('active');
         })
-    </script> --}}
+    </script>
 @endpush
