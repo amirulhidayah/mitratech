@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Projek;
 use App\Models\Client;
 use App\Models\Cover;
+use App\Models\Pengaturan;
 use App\Models\PlatformProjek;
 use App\Models\Tim;
 
@@ -18,7 +19,8 @@ class WelcomeController extends Controller
         $client = Client::get();
         $tim = Tim::orderBy('urutan')->get();
         $cover = Cover::get();
-        return view('pages.welcome', compact(['projek', 'client', 'tim', 'cover']));
+        $pengaturan = Pengaturan::find(1)->first();
+        return view('pages.welcome', compact(['projek', 'client', 'tim', 'cover', 'pengaturan']));
     }
 
     public function login()

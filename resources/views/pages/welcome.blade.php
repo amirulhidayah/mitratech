@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/welcome/img/logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="assets/welcome/img/{{ $pengaturan->logo }}" type="image/x-icon" />
 
     <!-- Map CSS -->
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" />
@@ -44,7 +44,7 @@
     </style>
 
     <!-- Title -->
-    <title>Mitra Technology</title>
+    <title>{{ $pengaturan->nama_website }}</title>
 </head>
 
 <body>
@@ -55,7 +55,7 @@
         <div class="container">
             <!-- Brand -->
             <a class="navbar-brand" href="./index.html">
-                <img src="assets/welcome/img/logo.png" class="navbar-brand-img" alt="..." />
+                <img src="assets/welcome/img/{{ $pengaturan->logo }}" class="navbar-brand-img" alt="..." />
             </a>
 
             <!-- Toggler -->
@@ -99,7 +99,7 @@
                     <a class="navbar-btn btn btn-sm btn-primary lift ms-auto" href="#kontak" data-scroll='{"offset": 0}'>
                         Kontak
                     </a>
-                    <a class="navbar-btn btn btn-sm btn-success lift ms-2" href="/tim" data-scroll='{"offset": 0}'>
+                    <a class="navbar-btn btn btn-sm btn-success lift ms-2" href="/dashboard" data-scroll='{"offset": 0}'>
                         Dashboard
                     </a>
                 @else
@@ -118,13 +118,12 @@
                 <div class="col-12 col-md-10 col-lg-8 text-center">
                     <!-- Headin -->
                     <h1 class="display-2">
-                        Mitra <b class="text-primary">Technology</b>
+                        <b>{{ $pengaturan->nama_website }}</b>
                     </h1>
 
                     <!-- Text -->
                     <p class="lead text-muted mb-7 mb-md-9">
-                        Kami bisa bantu anda mewujudkan ide anda kedalam platform yang
-                        anda inginkan
+                        {{ $pengaturan->slogan }}
                     </p>
                 </div>
             </div>
@@ -650,7 +649,7 @@
 
                     <!-- Link -->
                     <div class="mb-5 mb-md-0">
-                        <p>0811-4583-853</p>
+                        <p>{{ $pengaturan->kontak }}</p>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 text-center">
@@ -658,7 +657,7 @@
                     <h6 class="text-uppercase text-gray-700 mb-1">Email</h6>
 
                     <!-- Link -->
-                    <p>mitrateknologi1@gmail.com</p>
+                    <p>{{ $pengaturan->email }}</p>
                 </div>
             </div>
             <!-- / .row -->
@@ -680,11 +679,11 @@
             <div class="row">
                 <div class="col-12">
                     <!-- Brand -->
-                    <img src="./assets/welcome/img/logo.png" alt="..." class="footer-brand img-fluid mb-2"
-                        height="100px" width="100px" />
+                    <img src="./assets/welcome/img/{{ $pengaturan->logo }}" alt="..."
+                        class="footer-brand img-fluid mb-2" height="100px" width="100px" />
 
                     <!-- Text -->
-                    <p class="text-gray-700 mb-2">Lorem ipsum dolor sit amet.</p>
+                    <p class="text-gray-700 mb-2">{{ $pengaturan->nama_website }}</p>
                 </div>
             </div>
             <!-- / .row -->
