@@ -44,8 +44,8 @@
         <div class="logo-header position-fixed" data-background-color="dark">
 
             <a href="index.html" class="logo">
-                <img src="/assets/dashboard/img/logo.png" alt="navbar brand" class="navbar-brand" height="25px"
-                    width="25px" style="filter: brightness(0) invert(1);">
+                <img src="/assets/welcome/img/{{ App\Models\Pengaturan::find(1)->first()->logo }}" alt="navbar brand"
+                    class="navbar-brand" height="25px" width="25px" style="filter: brightness(0) invert(1);">
             </a>
             <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
                 data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">

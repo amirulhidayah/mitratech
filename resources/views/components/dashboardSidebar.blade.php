@@ -53,9 +53,16 @@
                                 <p>Users</p>
                             </a>
                         </li>
+                        <li class="nav-item" id="nav-pengaturan">
+                            <a href="{{ url('pengaturan') }}">
+                                <i class="fas fa-cog"></i>
+                                <p>Pengaturan</p>
+                            </a>
+                        </li>
                         <li class="nav-link px-5 mt-2 text-center" id="nav-logout">
-                            <a href="/logout" class="btn btn-sm btn-danger"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-                        </li>                            
+                            <a href="/logout" class="btn btn-sm btn-danger"><i class="fas fa-sign-out-alt"></i> Log
+                                Out</a>
+                        </li>
                     </ul>
                 </div>
             </div>
