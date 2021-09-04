@@ -47,6 +47,7 @@ Route::group(['middleware' => ['auth']], function () {
         'index', 'update'
     ]);
     Route::post('upload', [ProjekController::class, 'upload']);
+    Route::get('/edit-profile/{user}', [UserController::class, 'editProfile']);
     Route::get('/logout', [WelcomeController::class, 'logout']);
 });
 

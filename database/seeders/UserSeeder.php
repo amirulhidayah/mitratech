@@ -50,6 +50,15 @@ class UserSeeder extends Seeder
                 'role' => 1,
                 'foto' => 'empty-picture.png',
                 'remember_token' => Str::random(10),
+            ],
+            [
+                'name' => 'Testing',
+                'username' => 'testing',
+                'email' => $faker->unique()->safeEmail(),
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'role' => 2,
+                'foto' => 'empty-picture.png',
+                'remember_token' => Str::random(10),
             ]
         ];
         // foreach ($user as $a) {
