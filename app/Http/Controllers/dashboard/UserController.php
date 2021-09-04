@@ -6,9 +6,13 @@ use App\Models\Tim;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+
+use Illuminate\Support\Facades\Crypt;
 use Yajra\DataTables\Facades\DataTables;
 
 
@@ -31,7 +35,7 @@ class UserController extends Controller
                     return $foto;
                 })
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="' . route('user.edit', $row->id) . '" class="edit btn btn-success btn-sm my-2">Edit</a>';
+                    $actionBtn = '<a href="/user/' . $row->id . '/edit" class="edit btn btn-success btn-sm my-2">Edit</a>';
 
                     $actionBtn .= ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteUser">Hapus</a>';
                     return $actionBtn;
@@ -115,7 +119,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('pages.dashboard.user.edit', ['user' => $user]);
     }
 
     /**
@@ -127,7 +131,57 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        // dd($user->name);
+        $validated = $request->validate(
+            [
+                'name' => 'required',
+                'email' => [
+                    'required',
+                    'min:4',
+                    Rule::unique('users', 'email')->ignore($user->id),
+                ],
+                'username' => [
+                    'required',
+                    Rule::unique('users', 'username')->ignore($user->id),
+                ],
+                'password' => 'required|min:4',
+                'foto' => 'nullable|image|max:512',
+                'role' => 'required',
+            ],
+            [
+                'name.required' => 'Nama Tidak Boleh Kosong',
+                'email.required' => 'Email Tidak Boleh Kosong',
+                'email.unique' => 'Email Sudah Ada',
+                'username.required' => 'Username Tidak Boleh Kosong',
+                'username.unique' => 'Username Sudah Ada',
+                'username.min' => 'Username Minimal 4 Karakter',
+                'password.required' => 'Password Tidak Boleh Kosong',
+                'password.min' => 'Password Minimal 4 Karakter',
+                'foto.required' => 'Foto Tidak Boleh Kosong',
+                'foto.image' => 'Foto Harus Berupa Sebuah Gambar',
+                'foto.max' => 'Ukuran Foto Tidak Boleh Lebih Dari 500 Kb',
+                'role.required' => 'Role Tidak Boleh Kosong',
+            ]
+        );
+
+        if ($request->foto) {
+            if ($request->foto != 'empty-picture.png') {
+                File::delete(public_path("assets/dashboard/users" . $user->foto));
+            }
+            $namaFoto = time() . '.' . $request->foto->extension();
+            $request->foto->move(public_path('assets/dashboard/users'), $namaFoto);
+            $user->foto = $namaFoto;
+        }
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->username = $request->username;
+        $user->password = Hash::make($request->password);
+        $user->role = $request->role;
+        $user->save();
+
+        Toastr::success('Berhasil Merubah User', 'Success');
+        return redirect('/user');
     }
 
     /**
@@ -138,6 +192,13 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        if ($user->foto != 'empty-picture.png') {
+            File::delete(public_path("assets/dashboard/users/" . $user->foto));
+        }
+        $user->delete();
+        return response()->json([
+            'res' => 'success',
+            'message' => 'User Berhasil Dihapus'
+        ]);
     }
 }

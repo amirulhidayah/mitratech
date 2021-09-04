@@ -1,44 +1,51 @@
 @extends('layouts.dashboard')
 
 @section('title')
-    Tambah User
+    Edit User
 @endsection
 
 @section('content')
-    <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="/user/{{ $user->id }}" method="POST" enctype="multipart/form-data" id="formEditUser">
         @csrf
+        @method('PUT')
         <div class="form-group @error('name') has-error @enderror">
-            <label for="errorInput">Name</label>
-            <input type="text" class="form-control" name="name" placeholder="Masukkan name" required value="{{ old('name') }}">
+            <label for="errorInput">Nama</label>
+            <input type="text" value="{{ $user->name }}" class="form-control" name="name" placeholder="Masukkan Nama" required>
             @error('name')
                 <small class="form-text text-danger">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group @error('email') has-error @enderror">
             <label for="errorInput">Email</label>
-            <input type="email" class="form-control" name="email" required
-                placeholder="Masukkan Email" value="{{ old('email') }}">
+            <input type="email" value="{{ $user->email }}" class="form-control" name="email" required
+                placeholder="Masukkan Email">
             @error('email')
                 <small class="form-text text-danger">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group @error('username') has-error @enderror">
             <label for="errorInput">Username</label>
-            <input type="text" class="form-control" name="username" required
-                placeholder="Masukkan username" value="{{ old('username') }}">
+            <input type="text" value="{{ $user->username }}" class="form-control" name="username" required
+                placeholder="Masukkan Posisi">
             @error('username')
                 <small class="form-text text-danger">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group @error('password') has-error @enderror">
             <label for="errorInput">Password</label>
-            <input type="password" class="form-control" name="password" required
-                placeholder="Masukkan password" id="password" value="{{ old('password') }}">
-            @error('password')
-                <small class="form-text text-danger">{{ $message }}</small>
-            @enderror            
+            <div class="row">
+                <div class="col-lg-10 col-md-8 col-sm-8">
+                    <input type="password" value="{{ $user->password }}" class="form-control" name="password" id="password" required placeholder="Masukkan Password" disabled>
+                    @error('password')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 text-center">                    
+                    <a class="btn btn-warning" id="changePass">Change Password</a>                    
+                </div>
+            </div>
         </div>
-        <div class="form-check py-0">
+        <div class="form-check py-0 d-none" id="showPassDiv">
             <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" id="showPass">
                 <span class="form-check-sign">Show Password</span>
@@ -46,12 +53,12 @@
         </div>
         <div class="form-group @error('foto') has-error @enderror">
             <label for="errorInput">Foto</label>
-            <div id='img_contain'><img id="blah" align='middle' src="/assets/dashboard/img/empty-picture.png" alt=""
+            <div id='img_contain'><img id="blah" align='middle' src="/assets/dashboard/users/{{ $user->foto }}" alt=""
                     title='' /></div>
             <div class="input-group mt-2">
                 <div class="custom-file">
                     <input type="file" id="inputGroupFile01" class="imgInp custom-file-input"
-                        aria-describedby="inputGroupFileAddon01" name="foto" required value="{{ old('foto') }}">
+                        aria-describedby="inputGroupFileAddon01" name="foto">
                     <label class="custom-file-label" for="inputGroupFile01">Tambah Foto</label>
                 </div>
             </div>
@@ -60,19 +67,21 @@
                 <small class="form-text text-danger">{{ $message }}</small>
             @enderror
         </div>
-        <div class="form-group @error('role') has-error @enderror">
+        <div class="form-group @error('role') has-error @enderror @if ($user->role == "1" )
+            d-none
+        @endif">
             <label for="errorInput">Role</label>
             <select class="custom-select mb-3" name="role" required>
                 <option selected value="">- Pilih Role -</option>
-                <option value="1" @if (old('role') == "1") {{ 'selected' }} @endif>Super Admin</option>
-                <option value="2" @if (old('role') == "2") {{ 'selected' }} @endif>Admin</option>                
+                <option value="1" @if ($user->role == "1") {{ 'selected' }} @endif>Super Admin</option>
+                <option value="2" @if ($user->role == "2") {{ 'selected' }} @endif>Admin</option>                
             </select>
             @error('role')
                 <small class="form-text text-danger">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary float-right">Tambah</button>
+            <button type="submit" class="btn btn-primary float-right">Simpan</button>
         </div>
     </form>
 @endsection
@@ -169,7 +178,15 @@
     <script>
         $(document).ready(function() {
             $('#nav-users').addClass('active');
-
+            $('#changePass').click(function(){                
+                $('#showPassDiv').removeClass('d-none')
+                $('#password').removeAttr('disabled')
+                $('#password').val('')
+                $('#password').focus()
+            })
+            $('#formEditUser').submit(function(){
+                $('#password').removeAttr('disabled')
+            })
             $('#showPass').click(function(){
                 if($(this).prop("checked") == true){
                     $('#password').attr('type', 'text');
@@ -179,5 +196,6 @@
                 }
             });
         })
+    
     </script>
 @endpush

@@ -29,8 +29,8 @@ class WelcomeController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'username' => ['required', 'min:5'],
-            'password' => ['required', 'min:5'],
+            'username' => ['required', 'min:4'],
+            'password' => ['required', 'min:4'],
         ]);
 
         if (Auth::attempt($credentials)) {
