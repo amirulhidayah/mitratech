@@ -9,9 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -26,24 +27,28 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            $data = User::all();
-            return DataTables::of($data)
-                ->addIndexColumn()
-                ->addColumn('foto', function ($row) {
-                    $foto = '<img src="/assets/dashboard/users/' . $row->foto . '" alt="" height="100px" class="my-3">';
-                    return $foto;
-                })
-                ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="/user/' . $row->id . '/edit" class="edit btn btn-success btn-sm my-2">Edit</a>';
+        if (Auth::user()->role == 1) {
+            if ($request->ajax()) {
+                $data = User::all();
+                return DataTables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('foto', function ($row) {
+                        $foto = '<img src="/assets/dashboard/users/' . $row->foto . '" alt="" height="100px" class="my-3">';
+                        return $foto;
+                    })
+                    ->addColumn('action', function ($row) {
+                        $actionBtn = '<a href="/user/' . $row->id . '/edit" class="edit btn btn-success btn-sm my-2">Edit</a>';
 
-                    $actionBtn .= ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteUser">Hapus</a>';
-                    return $actionBtn;
-                })
-                ->rawColumns(['foto', 'action'])
-                ->make(true);
+                        $actionBtn .= ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteUser">Hapus</a>';
+                        return $actionBtn;
+                    })
+                    ->rawColumns(['foto', 'action'])
+                    ->make(true);
+            }
+            return view('pages.dashboard.user.index');
+        } else {
+            abort(404);
         }
-        return view('pages.dashboard.user.index');
     }
 
     /**
@@ -53,7 +58,11 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('pages.dashboard.user.create');
+        if (Auth::user()->role == 1) {
+            return view('pages.dashboard.user.create');
+        } else {
+            abort(404);
+        }
     }
 
     /**
@@ -119,7 +128,20 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('pages.dashboard.user.edit', ['user' => $user]);
+        if (Auth::user()->role == 1) {
+            return view('pages.dashboard.user.edit', ['user' => $user]);
+        } else {
+            abort(404);
+        }
+    }
+
+    public function editProfile(User $user)
+    {
+        if ($user->id == Auth::user()->id) {
+            return view('pages.dashboard.user.edit_profile', ['user' => $user]);
+        } else {
+            abort(404);
+        }
     }
 
     /**
@@ -131,7 +153,6 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        // dd($user->name);
         $validated = $request->validate(
             [
                 'name' => 'required',
@@ -176,12 +197,21 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->username = $request->username;
-        $user->password = Hash::make($request->password);
+        if ($request->password == $request->password_old) {
+            $user->password = $request->password;
+        } else {
+            $user->password = Hash::make($request->password);
+        }
         $user->role = $request->role;
         $user->save();
 
-        Toastr::success('Berhasil Merubah User', 'Success');
-        return redirect('/user');
+        if (Auth::user()->role == 1) {
+            Toastr::success('Berhasil Merubah User', 'Success');
+            return redirect('/user');
+        } else {
+            Toastr::success('Berhasil Merubah Profile', 'Success');
+            return redirect('/dashboard');
+        }
     }
 
     /**

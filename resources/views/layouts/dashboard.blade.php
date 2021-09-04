@@ -73,7 +73,7 @@
                     <li class="nav-item dropdown hidden-caret">
                         <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                             <div class="avatar-sm">
-                                <img src="/assets/dashboard/img/profile.jpg" alt="..."
+                                <img src="/assets/dashboard/users/{{ Auth::user()->foto }}" alt="..."
                                     class="avatar-img rounded-circle">
                             </div>
                         </a>
@@ -81,7 +81,7 @@
                             <div class="dropdown-user-scroll scrollbar-outer">
                                 <li>
                                     <div class="user-box">
-                                        <div class="avatar-lg"><img src="/assets/dashboard/img/profile.jpg"
+                                        <div class="avatar-lg"><img src="/assets/dashboard/users/{{ Auth::user()->foto }}"
                                                 alt="image profile" class="avatar-img rounded"></div>
                                         <div class="u-text">
                                             <h4>{{ Auth::user()->name }}</h4>
@@ -91,7 +91,7 @@
                                 </li>
                                 <li>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Atur Akun</a>
+                                    <a class="dropdown-item" href="/edit-profile/{{ Auth::user()->id }}">Edit Profile</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ url('logout') }}">Logout</a>
                                 </li>

@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-    Edit User
+    Edit Profile
 @endsection
 
 @section('content')
@@ -68,9 +68,7 @@
                 <small class="form-text text-danger">{{ $message }}</small>
             @enderror
         </div>
-        <div class="form-group @error('role') has-error @enderror @if ($user->role == "1" )
-            d-none
-        @endif">
+        <div class="form-group @error('role') has-error @enderror d-none">
             <label for="errorInput">Role</label>
             <select class="custom-select mb-3" name="role" required>
                 <option selected value="">- Pilih Role -</option>
@@ -178,6 +176,7 @@
     </script>
     <script>
         $(document).ready(function() {
+            $('#password').prop('disabled', true)
             $('#nav-users').addClass('active');
             $('#changePass').click(function(){                
                 $('#showPassDiv').removeClass('d-none')

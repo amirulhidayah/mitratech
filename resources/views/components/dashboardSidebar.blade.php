@@ -47,12 +47,14 @@
                                 <p>Cover</p>
                             </a>
                         </li>
-                        <li class="nav-item" id="nav-users">
-                            <a href="{{ url('user') }}">
-                                <i class="fas fa-users"></i>
-                                <p>Users</p>
-                            </a>
-                        </li>
+                        @if (Auth::user()->role == 1)
+                            <li class="nav-item" id="nav-users">
+                                <a href="{{ url('user') }}">
+                                    <i class="fas fa-users"></i>
+                                    <p>Users</p>
+                                </a>
+                            </li>                            
+                        @endif
                         <li class="nav-link px-5 mt-2 text-center" id="nav-logout">
                             <a href="/logout" class="btn btn-sm btn-danger"><i class="fas fa-sign-out-alt"></i> Log Out</a>
                         </li>                            
