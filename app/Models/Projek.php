@@ -15,17 +15,25 @@ class Projek extends Model
         return $this->belongsTo(PlatformProjek::class);
     }
 
-    public function scopeCari($query, array $filters)
+    public function paket()
     {
-        $query->when($filters['cari'] ?? false, function ($query, $cari) {
-            return $query->where('judul', 'like', '%' . $cari . '%')
-                ->orWhere('isi', 'like', '%' . $cari . '%');
-        });
+        return $this->belongsTo(Paket::class);
+    }
 
-        $query->when($filters['platform'] ?? false, function ($query, $platform) {
-            return $query->whereHas('platformProjek', function ($query) use ($platform) {
-                $query->where('platform_projek_id', $platform);
-            });
-        });
+    public function scopeCari($query, $request)
+    {
+        if ($request['cari']) {
+            $query->where('judul', 'like', '%' . $request['cari'] . '%');
+        };
+
+        if ($request['platform']) {
+            $query->where('platform_projek_id', $request['platform']);
+        }
+
+        if ($request['paket']) {
+            $query->where('paket_id', $request['paket']);
+        }
+
+        return $query;
     }
 }

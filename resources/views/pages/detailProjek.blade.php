@@ -26,7 +26,6 @@
             z-index: 9999;
             background: url("/assets/welcome/img/loading.gif") 50% 50% no-repeat rgb(249, 249, 249);
         }
-
     </style>
 
     <!-- Title -->
@@ -64,9 +63,12 @@
                 </div>
                 <div class="col-12 col-md-10 col-lg-9 col-xl-8 text-center">
 
-                    <a href="{{ url('daftarProjek?platform=' . $projek->platform_projek_id) }}"
-                        class="text-muted text-decoration-none">
-                        {{ $projek->platformProjek->nama }}</a>
+                    <p class="text-muted"><a href="{{ url('daftarProjek?platform=' . $projek->platform_projek_id) }}"
+                            class="text-muted text-decoration-none">
+                            {{ $projek->platformProjek->nama }}</a> | Paket : <a
+                            href="{{ url('daftarProjek?paket=' . $projek->paket_id) }}"
+                            class="text-muted text-decoration-none">
+                            {{ $projek->paket->nama }}</a></p>
 
                 </div>
             </div> <!-- / .row -->

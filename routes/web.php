@@ -9,6 +9,7 @@ use App\Http\Controllers\dashboard\CoverController;
 use App\Http\Controllers\dashboard\ClientController;
 use App\Http\Controllers\dashboard\ProjekController;
 use App\Http\Controllers\dashboard\DashboardController;
+use App\Http\Controllers\dashboard\PaketController;
 use App\Http\Controllers\dashboard\PengaturanController;
 use App\Http\Controllers\dashboard\PlatformProjekController;
 
@@ -42,6 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
         'platformProjek' => PlatformProjekController::class,
         'projek' => ProjekController::class,
         'user' => UserController::class,
+        'paket' => PaketController::class,
     ]);
     Route::resource('pengaturan', PengaturanController::class)->only([
         'index', 'update'
