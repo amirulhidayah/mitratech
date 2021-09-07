@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Projek;
 use App\Models\Client;
 use App\Models\Cover;
+use App\Models\Paket;
 use App\Models\Pengaturan;
 use App\Models\PlatformProjek;
 use App\Models\Tim;
@@ -19,8 +20,9 @@ class WelcomeController extends Controller
         $client = Client::get();
         $tim = Tim::orderBy('urutan')->get();
         $cover = Cover::get();
+        $daftarPaket = Paket::with('fiturPaket')->orderBy('urutan')->get();
         $pengaturan = Pengaturan::find(1)->first();
-        return view('pages.welcome', compact(['projek', 'client', 'tim', 'cover', 'pengaturan']));
+        return view('pages.welcome', compact(['projek', 'client', 'tim', 'cover', 'pengaturan', 'daftarPaket']));
     }
 
     public function login()
@@ -63,7 +65,8 @@ class WelcomeController extends Controller
     public function daftarProjek()
     {
         $platforms = PlatformProjek::orderBy('nama')->get();
-        $projeks = Projek::with('platformProjek')->cari(request(['cari', 'platform']))->latest()->paginate(6)->withQueryString();
-        return view('pages.daftarProjek', compact(['platforms', 'projeks']));
+        $paket = Paket::orderBy('urutan')->get();
+        $projeks = Projek::with('platformProjek')->cari(request())->latest()->paginate(6)->withQueryString();
+        return view('pages.daftarProjek', compact(['platforms', 'projeks', 'paket']));
     }
 }

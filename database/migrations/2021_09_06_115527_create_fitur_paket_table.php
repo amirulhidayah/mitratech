@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProjekTable extends Migration
+class CreateFiturPaketTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateProjekTable extends Migration
      */
     public function up()
     {
-        Schema::create('projek', function (Blueprint $table) {
+        Schema::create('fitur_paket', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->text('deskripsi');
-            $table->text('isi');
-            $table->text('foto');
-            $table->integer('platform_projek_id');
+            $table->text('fitur');
             $table->integer('paket_id');
             $table->timestamps();
         });
@@ -32,6 +28,6 @@ class CreateProjekTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('projek');
+        Schema::dropIfExists('fitur_paket');
     }
 }

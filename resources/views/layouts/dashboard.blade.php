@@ -43,7 +43,7 @@
         <!-- Logo Header -->
         <div class="logo-header position-fixed" data-background-color="dark">
 
-            <a href="index.html" class="logo">
+            <a href="{{url('dashboard')}}" class="logo">
                 <img src="/assets/welcome/img/{{ App\Models\Pengaturan::find(1)->first()->logo }}" alt="navbar brand"
                     class="navbar-brand" height="25px" width="25px" style="filter: brightness(0) invert(1);">
             </a>
@@ -81,7 +81,8 @@
                             <div class="dropdown-user-scroll scrollbar-outer">
                                 <li>
                                     <div class="user-box">
-                                        <div class="avatar-lg"><img src="/assets/dashboard/users/{{ Auth::user()->foto }}"
+                                        <div class="avatar-lg"><img
+                                                src="/assets/dashboard/users/{{ Auth::user()->foto }}"
                                                 alt="image profile" class="avatar-img rounded"></div>
                                         <div class="u-text">
                                             <h4>{{ Auth::user()->name }}</h4>
@@ -91,7 +92,8 @@
                                 </li>
                                 <li>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/edit-profile/{{ Auth::user()->id }}">Edit Profile</a>
+                                    <a class="dropdown-item" href="/edit-profile/{{ Auth::user()->id }}">Edit
+                                        Profile</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ url('logout') }}">Logout</a>
                                 </li>
@@ -162,8 +164,8 @@
             </a>
             <div class="quick-sidebar-wrapper">
                 <ul class="nav nav-tabs nav-line nav-color-secondary" role="tablist">
-                    <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#messages"
-                            role="tab" aria-selected="true">Messages</a> </li>
+                    <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#messages" role="tab"
+                            aria-selected="true">Messages</a> </li>
                     <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tasks" role="tab"
                             aria-selected="false">Tasks</a> </li>
                     <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#settings" role="tab"

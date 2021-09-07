@@ -26,7 +26,6 @@
             z-index: 9999;
             background: url("assets/welcome/img/loading.gif") 50% 50% no-repeat rgb(249, 249, 249);
         }
-
     </style>
 
     <!-- Title -->
@@ -94,13 +93,23 @@
                             </span>
 
                             @if (request('platform'))
-                                <input class="form-control border-0 px-1" type="hidden" aria-label="Cari Projek"
-                                    placeholder="Cari Projek" name="platform" value="{{ request('platform') }}">
+                            <input class="form-control border-0 px-1" type="hidden" aria-label="Cari Projek"
+                                placeholder="Cari Projek" name="platform" value="{{ request('platform') }}">
                             @endif
 
                             <!-- Input -->
                             <input class="form-control border-0 px-1" type="text" aria-label="Cari Projek"
                                 placeholder="Cari Projek" name="cari" value="{{ request('cari') }}">
+                            <select class="form-control border-0 px-1" aria-label="Default select example" name="paket"
+                                required>
+                                <option selected hidden value="">Pilih Paket</option>
+                                <option value="">Semua</option>
+                                @foreach ($paket as $pakets)
+                                <option value="{{$pakets->id}}" @if (request('paket')==$pakets->id)
+                                    selected
+                                    @endif>{{$pakets->nama}}</option>
+                                @endforeach
+                            </select>
 
                             <!-- Text -->
                             <span class="input-group-text border-0 py-0 ps-1 pe-3">
@@ -125,14 +134,18 @@
                         <div class="col ms-n5">
 
                             <!-- Badges -->
-                            <a class="badge rounded-pill bg-secondary-soft" href="{{ url('daftarProjek') }}">
+                            <a class="badge rounded-pill bg-secondary-soft
+                            @if (!request('platform'))
+                                active
+                                @endif " href="{{ url('daftarProjek') }}">
                                 <span class="h6 text-uppercase">Semua</span>
                             </a>
                             @foreach ($platforms as $platform)
-                                <a class="badge rounded-pill bg-secondary-soft"
-                                    href="{{ url('/daftarProjek?platform=' . $platform->id) }}">
-                                    <span class="h6 text-uppercase">{{ $platform->nama }}</span>
-                                </a>
+                            <a class="badge rounded-pill bg-secondary-soft @if (request('platform') == $platform->id)
+                                active
+                            @endif" href="{{ url('/daftarProjek?platform=' . $platform->id) }}">
+                                <span class="h6 text-uppercase">{{ $platform->nama }}</span>
+                            </a>
                             @endforeach
 
 
@@ -149,62 +162,66 @@
         <div class="container">
             <div class="row">
                 @foreach ($projeks as $projek)
-                    <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="col-12 col-md-6 col-lg-4 d-flex">
 
-                        <!-- Card -->
-                        <div class="card mb-6 mb-lg-0 shadow-light-lg lift lift-lg">
+                    <!-- Card -->
+                    <div class="card mb-6 mb-lg-0 shadow-light-lg lift lift-lg">
+
+                        <!-- Image -->
+                        <a class="card-img-top" href="{{ url('detailProjek/' . $projek->id) }}">
 
                             <!-- Image -->
-                            <a class="card-img-top" href="{{ url('detailProjek/' . $projek->id) }}">
+                            <img src="/assets/welcome/img/projek/foto/{{ $projek->foto }}" alt="..."
+                                class="card-img-top">
 
-                                <!-- Image -->
-                                <img src="/assets/welcome/img/projek/foto/{{ $projek->foto }}" alt="..."
-                                    class="card-img-top">
-
-                                <!-- Shape -->
-                                <div class="position-relative">
-                                    <div class="shape shape-bottom shape-fluid-x text-white">
-                                        <svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M2160 0C1440 240 720 240 720 240H0v240h2880V0h-720z"
-                                                fill="currentColor" />
-                                        </svg>
-                                    </div>
+                            <!-- Shape -->
+                            <div class="position-relative">
+                                <div class="shape shape-bottom shape-fluid-x text-white">
+                                    <svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M2160 0C1440 240 720 240 720 240H0v240h2880V0h-720z"
+                                            fill="currentColor" />
+                                    </svg>
                                 </div>
+                            </div>
 
-                            </a>
+                        </a>
 
-                            <!-- Body -->
-                            <a class="card-body" href="{{ url('detailProjek/' . $projek->id) }}">
+                        <!-- Body -->
+                        <a class="card-body" href="{{ url('detailProjek/' . $projek->id) }}">
 
-                                <!-- Heading -->
-                                <h3>
-                                    {{ $projek->judul }}
-                                </h3>
+                            <!-- Heading -->
+                            <h3>
+                                {{ $projek->judul }}
+                            </h3>
 
-                                <!-- Text -->
-                                <p class="mb-0 text-muted">
-                                    {{ $projek->deskripsi }}
-                                </p>
+                            <!-- Text -->
+                            <p class="mb-0 text-muted">
+                                {{ $projek->deskripsi }}
+                            </p>
 
-                            </a>
+                        </a>
 
-                            <!-- Meta -->
-                            <a class="card-meta mt-auto" href="{{ url('detailProjek/' . $projek->id) }}">
+                        <!-- Meta -->
+                        <a class="card-meta mt-auto" href="{{ url('detailProjek/' . $projek->id) }}">
 
-                                <!-- Divider -->
-                                <hr class="card-meta-divider">
+                            <!-- Divider -->
+                            <hr class="card-meta-divider">
 
-                                <!-- Date -->
-                                <p class="h6 text-uppercase text-muted mb-0 ms-auto">
-                                    {{ $projek->platformProjek->nama }}
-                                </p>
+                            <h6 class="text-uppercase text-muted me-2 mb-0">
+                                {{ $projek->platformProjek->nama }}
+                            </h6>
 
-                            </a>
+                            <!-- Date -->
+                            <p class="h6 text-uppercase text-muted mb-0 ms-auto">
+                                <time datetime="2019-05-02">Paket : {{$projek->paket->nama}}</time>
+                            </p>
 
-                        </div>
+                        </a>
 
                     </div>
+
+                </div>
                 @endforeach
 
             </div> <!-- / .row -->
@@ -212,9 +229,9 @@
     </section>
 
     @if (count($projeks) == 0)
-        <div class="container text-center">
-            <p class="fw-bold">Tidak Ada Projek</p>
-        </div>
+    <div class="container text-center">
+        <p class="fw-bold">Tidak Ada Projek</p>
+    </div>
     @endif
 
     {{-- Pagination --}}
