@@ -71,7 +71,10 @@ class PaketController extends Controller
                 'nama' => 'required',
                 'harga' => 'required',
                 'fitur' => 'required',
-                'urutan' => 'required|unique:paket',
+                'urutan' => [
+                    'required',
+                    Rule::unique('paket')->withoutTrashed()
+                ]
             ],
             [
                 'nama.required' => 'Nama Tidak Boleh Kosong',
@@ -139,7 +142,7 @@ class PaketController extends Controller
                 'fitur' => 'required',
                 'urutan' => [
                     'required',
-                    Rule::unique('paket')->ignore($paket->id)
+                    Rule::unique('paket')->ignore($paket->id)->withoutTrashed()
                 ],
             ],
             [

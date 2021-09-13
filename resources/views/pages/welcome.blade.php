@@ -40,6 +40,7 @@
             z-index: 9999;
             background: url("assets/welcome/img/loading.gif") 50% 50% no-repeat rgb(249, 249, 249);
         }
+
     </style>
 
     <!-- Title -->
@@ -587,7 +588,7 @@
                                 </div>
 
 
-                                @foreach ($paket->fiturPaket as $fitur)
+                                @foreach ($paket->fiturPaket->take(3) as $fitur)
                                 <div class="d-flex">
 
                                     <!-- Badge -->
@@ -603,11 +604,10 @@
                                 </div>
                                 @endforeach
 
-
                                 <!-- Button -->
-                                <a href="{{url('daftarProjek?paket=' . $fitur->paket_id)}}"
-                                    class="btn w-100 btn-primary">
-                                    Contoh Projek <i class="fe fe-arrow-right ms-3"></i>
+                                <a href="{{url('detailPaket',$paket->id)}}" class="btn w-100 btn-primary"
+                                    target="_blank">
+                                    Lihat Selengkapnya <i class="fe fe-arrow-right ms-3"></i>
                                 </a>
 
                             </div>
@@ -785,9 +785,10 @@
     <script src="assets/welcome/js/theme.bundle.js"></script>
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script>
-        $(window).load(function() {
+        $(window).load(function () {
             $(".loader").fadeOut("slow");
         });
+
     </script>
 </body>
 

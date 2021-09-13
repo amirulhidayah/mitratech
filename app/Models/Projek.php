@@ -12,19 +12,22 @@ class Projek extends Model
 
     public function platformProjek()
     {
-        return $this->belongsTo(PlatformProjek::class);
+        return $this->belongsTo(PlatformProjek::class)->withTrashed();
     }
 
     public function paket()
     {
-        return $this->belongsTo(Paket::class);
+        return $this->belongsTo(Paket::class)->withTrashed();
     }
 
     public function scopeCari($query, $request)
     {
         if ($request['cari']) {
-            $query->where('judul', 'like', '%' . $request['cari'] . '%');
-        };
+            $query->where(function ($query) use ($request) {
+                $query->where('judul', 'like', '%' . $request['cari'] . '%')
+                    ->orWhere('isi', 'like', '%' . $request['cari'] . '%');
+            });
+        }
 
         if ($request['platform']) {
             $query->where('platform_projek_id', $request['platform']);

@@ -22,11 +22,14 @@ class ProjekController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Projek::with('platformProjek');
+            $data = Projek::with('platformProjek')->orderByDesc('id');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('platform', function (Projek $projek) {
                     return $projek->platformProjek->nama;
+                })
+                ->addColumn('paket', function (Projek $projek) {
+                    return $projek->paket->nama;
                 })
                 ->addColumn('action', function ($row) {
                     $actionBtn = '<a href="' . route('projek.edit', $row->id) . '" class="edit btn btn-success btn-sm my-2">Edit</a>';
@@ -34,7 +37,7 @@ class ProjekController extends Controller
                     $actionBtn .= ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteProjek">Hapus</a>';
                     return $actionBtn;
                 })
-                ->rawColumns(['action', 'platform'])
+                ->rawColumns(['action', 'platform', 'paket'])
                 ->make(true);
         }
         return view('pages.dashboard.projek.index');
@@ -48,7 +51,8 @@ class ProjekController extends Controller
     public function create()
     {
         $platformProjek = DB::table('platform_projek')->get();
-        return view('pages.dashboard.projek.create', compact('platformProjek'));
+        $daftarPaket = DB::table('paket')->orderBy('urutan')->get();
+        return view('pages.dashboard.projek.create', compact(['platformProjek', 'daftarPaket']));
     }
 
     /**
@@ -65,7 +69,8 @@ class ProjekController extends Controller
                 'platform' => 'required',
                 'deskripsi' => 'required',
                 'foto' => 'required|image|max:512',
-                'isi' => 'required'
+                'isi' => 'required',
+                'paket' => 'required'
             ],
             [
                 'judul.required' => 'Judul Tidak Boleh Kosong',
@@ -74,19 +79,21 @@ class ProjekController extends Controller
                 'foto.required' => 'Foto Tidak Boleh Kosong',
                 'foto.image' => 'Foto Harus Berupa Sebuah Gambar',
                 'foto.max' => 'Ukuran Foto Tidak Boleh Lebih Dari 500 Kb',
-                'isi.required' => 'Isi Tidak Boleh Kosong'
+                'isi.required' => 'Isi Tidak Boleh Kosong',
+                'paket.required' => 'Paket Tidak Boleh Kosong'
             ]
         );
 
         $namaFoto = time() . '.' . $request->foto->extension();
         $request->foto->move(public_path('assets/welcome/img/projek/foto'), $namaFoto);
 
-        $projek = new Projek();
-        $projek->judul = $request->judul;
-        $projek->platform_projek_id = $request->platform;
-        $projek->isi = $request->isi;
-        $projek->deskripsi = $request->deskripsi;
-        $projek->foto = $namaFoto;
+        $projek                         = new Projek();
+        $projek->judul                  = $request->judul;
+        $projek->platform_projek_id     = $request->platform;
+        $projek->isi                    = $request->isi;
+        $projek->deskripsi              = $request->deskripsi;
+        $projek->foto                   = $namaFoto;
+        $projek->paket_id               = $request->paket;
         $projek->save();
 
         Toastr::success('Berhasil Menambahkan Projek', 'Success');
@@ -112,7 +119,8 @@ class ProjekController extends Controller
     public function edit(Projek $projek)
     {
         $platformProjek = DB::table('platform_projek')->get();
-        return view('pages.dashboard.projek.edit', compact(['projek', 'platformProjek']));
+        $daftarPaket = DB::table('paket')->orderBy('urutan')->get();
+        return view('pages.dashboard.projek.edit', compact(['projek', 'platformProjek', 'daftarPaket']));
     }
 
     /**
@@ -130,7 +138,8 @@ class ProjekController extends Controller
                 'platform' => 'required',
                 'deskripsi' => 'required',
                 'foto' => 'nullable|image|max:512',
-                'isi' => 'required'
+                'isi' => 'required',
+                'paket' => 'required'
             ],
             [
                 'judul.required' => 'Judul Tidak Boleh Kosong',
@@ -138,7 +147,8 @@ class ProjekController extends Controller
                 'deskripsi.required' => 'Deskripsi Tidak Boleh Kosong',
                 'foto.image' => 'Foto Harus Berupa Sebuah Gambar',
                 'foto.max' => 'Ukuran Foto Tidak Boleh Lebih Dari 500 Kb',
-                'isi.required' => 'Isi Tidak Boleh Kosong'
+                'isi.required' => 'Isi Tidak Boleh Kosong',
+                'paket.required' => 'Paket Tidak Boleh Kosong'
             ]
         );
 
@@ -155,6 +165,7 @@ class ProjekController extends Controller
         $projek->platform_projek_id = $request->platform;
         $projek->isi = $request->isi;
         $projek->deskripsi = $request->deskripsi;
+        $projek->paket_id = $request->paket;
         $projek->save();
 
         Toastr::success('Berhasil Mengupdate Projek', 'Success');

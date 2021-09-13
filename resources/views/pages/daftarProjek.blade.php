@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/assets/welcome/img/logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/assets/welcome/img/{{$pengaturan->logo}}" type="image/x-icon" />
 
     <!-- Map CSS -->
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" />
@@ -26,6 +26,7 @@
             z-index: 9999;
             background: url("assets/welcome/img/loading.gif") 50% 50% no-repeat rgb(249, 249, 249);
         }
+
     </style>
 
     <!-- Title -->
@@ -40,7 +41,8 @@
 
             <!-- Brand -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="/assets/welcome/img/logo.png" class="navbar-brand-img" alt="..." height="50px" width="50px">
+                <img src="/assets/welcome/img/{{$pengaturan->logo}}" class="navbar-brand-img" alt="..." height="50px"
+                    width="50px">
             </a>
 
         </div>
@@ -100,8 +102,7 @@
                             <!-- Input -->
                             <input class="form-control border-0 px-1" type="text" aria-label="Cari Projek"
                                 placeholder="Cari Projek" name="cari" value="{{ request('cari') }}">
-                            <select class="form-control border-0 px-1" aria-label="Default select example" name="paket"
-                                required>
+                            <select class="form-control border-0 px-1" aria-label="Default select example" name="paket">
                                 <option selected hidden value="">Pilih Paket</option>
                                 <option value="">Semua</option>
                                 @foreach ($paket as $pakets)
@@ -162,7 +163,7 @@
         <div class="container">
             <div class="row">
                 @foreach ($projeks as $projek)
-                <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="col-12 col-md-6 col-lg-4 d-flex my-4">
 
                     <!-- Card -->
                     <div class="card mb-6 mb-lg-0 shadow-light-lg lift lift-lg">
@@ -256,51 +257,13 @@
             <div class="row">
                 <div class="col-12">
                     <!-- Brand -->
-                    <img src="/assets/welcome/img/logo.png" alt="..." class="footer-brand img-fluid mb-2" height="100px"
-                        width="100px" />
+                    <img src="/assets/welcome/img/{{$pengaturan->logo}}" alt="..." class="footer-brand img-fluid mb-2"
+                        height="100px" width="100px" />
 
                     <!-- Text -->
-                    <p class="text-gray-700 mb-2">Lorem ipsum dolor sit amet.</p>
+                    <p class="text-gray-700 mb-2">{{$pengaturan->nama_website}}</p>
 
-                    <!-- Social -->
-                    <!-- <ul class="list-unstyled list-inline list-social mb-6 mb-md-0">
-              <li class="list-inline-item list-social-item me-3">
-                <a href="#!" class="text-decoration-none">
-                  <img
-                    src="./assets/img/icons/social/instagram.svg"
-                    class="list-social-icon"
-                    alt="..."
-                  />
-                </a>
-              </li>
-              <li class="list-inline-item list-social-item me-3">
-                <a href="#!" class="text-decoration-none">
-                  <img
-                    src="./assets/img/icons/social/facebook.svg"
-                    class="list-social-icon"
-                    alt="..."
-                  />
-                </a>
-              </li>
-              <li class="list-inline-item list-social-item me-3">
-                <a href="#!" class="text-decoration-none">
-                  <img
-                    src="./assets/img/icons/social/twitter.svg"
-                    class="list-social-icon"
-                    alt="..."
-                  />
-                </a>
-              </li>
-              <li class="list-inline-item list-social-item">
-                <a href="#!" class="text-decoration-none">
-                  <img
-                    src="./assets/img/icons/social/pinterest.svg"
-                    class="list-social-icon"
-                    alt="..."
-                  />
-                </a>
-              </li>
-            </ul> -->
+
                 </div>
             </div>
             <!-- / .row -->
@@ -319,9 +282,10 @@
     <script src="/assets/welcome/js/theme.bundle.js"></script>
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script>
-        $(window).load(function() {
+        $(window).load(function () {
             $(".loader").fadeOut("slow");
         });
+
     </script>
 
 </body>

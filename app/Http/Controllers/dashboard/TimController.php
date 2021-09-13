@@ -57,7 +57,10 @@ class TimController extends Controller
             [
                 'nama' => 'required',
                 'posisi' => 'required',
-                'urutan' => 'required|unique:tim',
+                'urutan' => [
+                    'required',
+                    Rule::unique('tim')->withoutTrashed()
+                ],
                 'foto' => 'required|image|max:512'
             ],
             [
@@ -122,7 +125,7 @@ class TimController extends Controller
                 'posisi' => 'required',
                 'urutan' => [
                     'required',
-                    Rule::unique('tim')->ignore($tim->id)
+                    Rule::unique('tim')->ignore($tim->id)->withoutTrashed()
                 ],
                 'foto' => 'nullable|image|max:512'
             ],

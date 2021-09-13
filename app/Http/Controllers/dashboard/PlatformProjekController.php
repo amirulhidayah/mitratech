@@ -55,7 +55,10 @@ class PlatformProjekController extends Controller
     {
         $validated = $request->validate(
             [
-                'nama' => 'required|unique:platform_projek',
+                'nama' => [
+                    'required',
+                    Rule::unique('platform_projek')->withoutTrashed()
+                ]
             ],
             [
                 'nama.required' => 'Nama Tidak Boleh Kosong',
@@ -106,7 +109,7 @@ class PlatformProjekController extends Controller
             [
                 'nama' => [
                     'required',
-                    Rule::unique('platform_projek')->ignore($platformProjek->id)
+                    Rule::unique('platform_projek')->ignore($platformProjek->id)->withoutTrashed()
                 ],
             ],
             [
