@@ -11,6 +11,7 @@ use App\Models\Paket;
 use App\Models\Pengaturan;
 use App\Models\PlatformProjek;
 use App\Models\Tim;
+use Illuminate\Support\Facades\DB;
 
 class WelcomeController extends Controller
 {
@@ -49,24 +50,29 @@ class WelcomeController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect('/');
     }
 
     public function detailProjek(Projek $projek)
     {
-        return view('pages.detailProjek', compact(['projek']));
+        $pengaturan = Pengaturan::find(1)->first();
+        return view('pages.detailProjek', compact(['projek', 'pengaturan']));
     }
 
     public function daftarProjek()
     {
-        $platforms = PlatformProjek::orderBy('nama')->get();
-        $paket = Paket::orderBy('urutan')->get();
+        $platforms = PlatformProjek::orderBy('nama')->withTrashed()->get();
+        $paket = Paket::orderBy('urutan')->withTrashed()->get();
         $projeks = Projek::with('platformProjek')->cari(request())->latest()->paginate(6)->withQueryString();
-        return view('pages.daftarProjek', compact(['platforms', 'projeks', 'paket']));
+        $pengaturan = Pengaturan::find(1)->first();
+        return view('pages.daftarProjek', compact(['platforms', 'projeks', 'paket', 'pengaturan']));
+    }
+
+    public function detailPaket(Paket $paket)
+    {
+        $pengaturan = Pengaturan::find(1)->first();
+        return view('pages.detailPaket', compact(['paket', 'pengaturan']));
     }
 }

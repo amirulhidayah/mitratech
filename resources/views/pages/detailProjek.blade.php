@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/assets/welcome/img/logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/assets/welcome/img/{{$pengaturan->logo}}" type="image/x-icon" />
 
     <!-- Map CSS -->
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" />
@@ -26,6 +26,7 @@
             z-index: 9999;
             background: url("/assets/welcome/img/loading.gif") 50% 50% no-repeat rgb(249, 249, 249);
         }
+
     </style>
 
     <!-- Title -->
@@ -40,7 +41,8 @@
 
             <!-- Brand -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="/assets/welcome/img/logo.png" class="navbar-brand-img" alt="..." height="50px" width="50px">
+                <img src="/assets/welcome/img/{{$pengaturan->logo}}" class="navbar-brand-img" alt="..." height="50px"
+                    width="50px">
             </a>
 
         </div>
@@ -65,7 +67,7 @@
 
                     <p class="text-muted"><a href="{{ url('daftarProjek?platform=' . $projek->platform_projek_id) }}"
                             class="text-muted text-decoration-none">
-                            {{ $projek->platformProjek->nama }}</a> | Paket : <a
+                            Platform : {{ $projek->platformProjek->nama }}</a> | Paket : <a
                             href="{{ url('daftarProjek?paket=' . $projek->paket_id) }}"
                             class="text-muted text-decoration-none">
                             {{ $projek->paket->nama }}</a></p>
@@ -103,51 +105,11 @@
             <div class="row">
                 <div class="col-12">
                     <!-- Brand -->
-                    <img src="/assets/welcome/img/logo.png" alt="..." class="footer-brand img-fluid mb-2" height="100px"
-                        width="100px" />
+                    <img src="/assets/welcome/img/{{$pengaturan->logo}}" alt="..." class="footer-brand img-fluid mb-2"
+                        height="100px" width="100px" />
 
                     <!-- Text -->
-                    <p class="text-gray-700 mb-2">Lorem ipsum dolor sit amet.</p>
-
-                    <!-- Social -->
-                    <!-- <ul class="list-unstyled list-inline list-social mb-6 mb-md-0">
-              <li class="list-inline-item list-social-item me-3">
-                <a href="#!" class="text-decoration-none">
-                  <img
-                    src="./assets/img/icons/social/instagram.svg"
-                    class="list-social-icon"
-                    alt="..."
-                  />
-                </a>
-              </li>
-              <li class="list-inline-item list-social-item me-3">
-                <a href="#!" class="text-decoration-none">
-                  <img
-                    src="./assets/img/icons/social/facebook.svg"
-                    class="list-social-icon"
-                    alt="..."
-                  />
-                </a>
-              </li>
-              <li class="list-inline-item list-social-item me-3">
-                <a href="#!" class="text-decoration-none">
-                  <img
-                    src="./assets/img/icons/social/twitter.svg"
-                    class="list-social-icon"
-                    alt="..."
-                  />
-                </a>
-              </li>
-              <li class="list-inline-item list-social-item">
-                <a href="#!" class="text-decoration-none">
-                  <img
-                    src="./assets/img/icons/social/pinterest.svg"
-                    class="list-social-icon"
-                    alt="..."
-                  />
-                </a>
-              </li>
-            </ul> -->
+                    <p class="text-gray-700 mb-2">{{$pengaturan->nama_website}}</p>
                 </div>
             </div>
             <!-- / .row -->
@@ -166,13 +128,14 @@
     <script src="/assets/welcome/js/theme.bundle.js"></script>
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script>
-        $(window).load(function() {
+        $(window).load(function () {
             $(".loader").fadeOut("slow");
         });
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             $("img").not('.navbar-brand-img').addClass('img-fluid py-4');
         })
+
     </script>
 
 </body>

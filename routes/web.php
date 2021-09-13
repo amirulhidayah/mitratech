@@ -28,6 +28,7 @@ Route::get('/', [WelcomeController::class, 'index']);
 
 Route::get('detailProjek/{projek}', [WelcomeController::class, 'detailProjek']);
 Route::get('daftarProjek', [WelcomeController::class, 'daftarProjek']);
+Route::get('detailPaket/{paket}', [WelcomeController::class, 'detailPaket']);
 
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/login', [WelcomeController::class, 'login'])->name('login');
