@@ -6,9 +6,12 @@
     <title>Login</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link rel="shortcut icon" href="assets/welcome/img/logo.png" type="image/x-icon" />
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/dashboard/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/dashboard/css/atlantis.css">
 
     <!-- Fonts and icons -->
-    <script src="{{ asset('assets/dashboard/js/plugin/webfont/webfont.min.js') }}"></script>
+    <script src="assets/dashboard/js/plugin/webfont/webfont.min.js"></script>
     <script>
         WebFont.load({
             google: {
@@ -26,9 +29,7 @@
         });
     </script>
 
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/atlantis.css') }}">
+    
 </head>
 
 <body class="login">
@@ -95,11 +96,11 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('assets/dashboard/js/core/jquery.3.2.1.min.js') }}"></script>
-    <script src="{{ asset('assets/dashboard/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('assets/dashboard/js/core/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/dashboard/js/core/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/dashboard/js/atlantis.min.js') }}"></script>
+    <script src="assets/dashboard/js/core/jquery.3.2.1.min.js"></script>
+    <script src="assets/dashboard/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="assets/dashboard/js/core/popper.min.js"></script>
+    <script src="assets/dashboard/js/core/bootstrap.min.js"></script>
+    <script src="assets/dashboard/js/atlantis.min.js"></script>
 </body>
 
 </html>
