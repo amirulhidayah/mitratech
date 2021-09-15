@@ -189,8 +189,7 @@
 
                 <!-- Text -->
                 <p class="fs-lg text-muted mb-6">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius non,
-                    eaque provident voluptatibus recusandae reiciendis?
+                    Ide yang ingin anda bangun dapat kami implementasikan ke dalam bentuk aplikasi dengan berbagai macam Platform.
                 </p>
 
                 <!-- List -->
@@ -206,8 +205,7 @@
 
                         <!-- Text -->
                         <p class="text-muted mb-6">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-                            ducimus officia, quasi qui delectus nesciunt.
+                            Dengan berbasis Website, anda dapat mengakses aplikasi melalui web browser seperti Google Chrome dan Firefox yang dapat diakses melalui Komputer, Tablet ataupun Smartphone kesayangan anda.
                         </p>
                     </div>
                 </div>
@@ -223,8 +221,7 @@
 
                         <!-- Text -->
                         <p class="text-muted mb-6 mb-md-0">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                            Dolorum beatae autem quisquam repudiandae vel enim.
+                            Dengan berbasis Android, anda dapat dengan mudah mengakses ataupun membuka aplikasi secara langsung melalui Smartphone/Tablet kesayangan anda.
                         </p>
                     </div>
                 </div>
@@ -241,8 +238,7 @@
 
                         <!-- Text -->
                         <p class="text-muted mb-6">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-                            cum, quasi est vel deserunt labore?
+                            Dengan berbasis Dekstop, anda dapat dengan mudah mengakses ataupun membuka aplikasi secara langsung melalui Komputer/Laptop kesayangan anda.
                         </p>
                     </div>
                 </div>
@@ -501,9 +497,8 @@
                     <h2 class="fw-bold"><b> Client Kami</b></h2>
 
                     <!-- Text -->
-                    <p class="fs-lg text-gray-700 mb-9">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero
-                        vero qui iste perferendis incidunt id amet aut ea soluta velit!
+                    <p class="fs-lg text-gray-700 mb-7">
+                        Berikut beberapa instansi yang telah menjadi client kami
                     </p>
                 </div>
             </div>
@@ -543,7 +538,7 @@
     @endif
 
 
-    <section class="py-5 pt-10 mb-5" id="client">
+    <section class="pb-5 pt-10" id="client">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10 col-lg-8 text-center">
